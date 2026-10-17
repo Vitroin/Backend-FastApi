@@ -1,6 +1,8 @@
 from fastapi import APIRouter, Depends
 
 from ..dependencies import verify_service_token
+from ..schemas.analysis import TripAnalysisRequest, TripAnalysisResponse
+from ..services.analysis_service import analyze_trip
 
 router = APIRouter(
     prefix="/analysis",
@@ -17,11 +19,8 @@ async def analyze_video():
     }
 
 
-@router.post(
-    "/trip",
-    response_model=TripAnalysisResponse,
-)
-def analyze_trip_endpoint(
-    request: TripAnalysisRequest,
-) -> TripAnalysisResponse:
+# Plain `def` (not async): FastAPI runs it in a thread pool, so CPU-heavy
+# model inference won't block other requests.
+@router.post("/trip")
+def analyze_trip_endpoint(request: TripAnalysisRequest) -> TripAnalysisResponse:
     return analyze_trip(request)

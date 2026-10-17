@@ -1,10 +1,6 @@
-from contextlib import asynccontextmanager
-
 from fastapi import FastAPI
 
 from .routers import coaching_tips, health, video_analysis
-
-
 
 app = FastAPI()
 

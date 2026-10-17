@@ -11,7 +11,7 @@ from app.main import app  # noqa: E402
 
 @pytest.fixture
 def client():
-    # The context manager runs the lifespan (MongoDB client startup/shutdown)
+    # The context manager runs the app's startup/shutdown events
     with TestClient(app) as client:
         yield client
 

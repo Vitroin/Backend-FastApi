@@ -5,7 +5,7 @@ from app.schemas.analysis import (
 )
 
 
-def analyze_trip( request: TripAnalysisRequest, ) -> TripAnalysisResponse:
+def analyze_trip(request: TripAnalysisRequest) -> TripAnalysisResponse:
     readings = [
         reading.model_dump()
         for reading in request.sensor_readings
