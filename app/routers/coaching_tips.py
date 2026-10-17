@@ -25,6 +25,6 @@ async def read_what_to_improve():
     return {"success": True, "message": "This is the what to improve endpoint."}
 
 
-@router.get("/actionPlan")
-async def read_action_plan():
-    return {"success": True, "message": "This is the action plan endpoint."}
+@router.get("/recommendations")
+async def read_recommendations():
+    return {"success": True, "message": "This is the recommendations endpoint."}
